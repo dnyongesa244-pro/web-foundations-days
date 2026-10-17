@@ -1,0 +1,146 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+  --page-background: #f3f6fb;
+  --card-background: #fff;
+  --text-color: #243047;
+  --muted-color: #526078;
+  --border-color: #aebbd0;
+  --button-background: #2557a7;
+  --button-hover: #173d7a;
+  --warning-color: #b45309;
+  --over-color: #b91c1c;
+}
+
+body.dark {
+  color-scheme: dark;
+  --page-background: #151b27;
+  --card-background: #222c3b;
+  --text-color: #e6edf7;
+  --muted-color: #b2bfd2;
+  --border-color: #63738b;
+  --button-background: #527fc8;
+  --button-hover: #6a95d9;
+  --warning-color: #fbbf24;
+  --over-color: #f87171;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--page-background);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.note-card {
+  width: min(100%, 680px);
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: var(--card-background);
+  box-shadow: 0 4px 18px rgb(25 45 75 / 12%);
+}
+
+.page-header,
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+h1,
+.page-header p,
+.counts p {
+  margin: 0;
+}
+
+.page-header p,
+.counts {
+  color: var(--muted-color);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--card-background);
+  color: var(--text-color);
+  font: inherit;
+  resize: vertical;
+}
+
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--button-background);
+  outline-offset: 2px;
+}
+
+.note-footer {
+  margin-top: 1rem;
+}
+
+.counts p {
+  font-size: 0.95rem;
+}
+
+.warning {
+  color: var(--warning-color);
+}
+
+.over {
+  color: var(--over-color);
+  font-weight: 700;
+}
+
+button {
+  padding: 0.6rem 0.9rem;
+  border: 0;
+  border-radius: 5px;
+  background-color: var(--button-background);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+@media (max-width: 480px) {
+  .note-card {
+    padding: 1.25rem;
+  }
+
+  .page-header,
+  .note-footer {
+    align-items: flex-start;
+  }
+
+  .page-header {
+    flex-direction: column-reverse;
+  }
+}
