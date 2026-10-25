@@ -1,0 +1,7 @@
+# Reflection
+
+The most difficult concept for me was understanding how transactions and database constraints prevent two people from buying the same seat at nearly the same time. At first, checking whether a seat looked available seemed sufficient, but I realized that two requests can read the same state before either one writes. I overcame this by tracing the competing requests step by step and making the database perform a conditional update inside a transaction. The unique constraint on completed tickets gives the design another layer of protection.
+
+Based on the feedback I received, I would improve the capstone by making the high-demand sale behavior and its assumptions even clearer. In particular, I would distinguish the average arrival rate from the short burst the system should be prepared to handle, and explain more explicitly why the seat map is advisory while the database is authoritative. That would make the design easier to evaluate for both performance and correctness.
+
+Next, I want to learn more about distributed systems, especially how queues, retries, and idempotency work across services. Those ideas matter in TicketHub because payment happens outside the database transaction, and ticket delivery can fail even after a successful purchase. I would like to build a small working prototype and test simultaneous seat requests, expired holds, and duplicate payment notifications.
